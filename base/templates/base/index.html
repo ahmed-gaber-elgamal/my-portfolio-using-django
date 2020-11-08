@@ -90,6 +90,28 @@
             <h3 style="text-align: center;">
                 Some of my past projects
             </h3>
+            <div class="post-wrapper">
+        {% for post in posts %}
+            <div class="post">
+                <img class="thumbnail" src="{% static 'images/ahmed-gaber.jpg' %}" alt="">
+                <div class="post-preview">
+                    <h6 class="post-title">{{post.headline}}</h6>
+                    <p class="post-intro">
+                        {{ post.sub_headline }}
+                    </p>
+                    <a href="{% url 'post' post.id %}">Read More</a>
+                    <hr>
+                    {% for tag in post.tags.all %}
+                        <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        {% empty %}
+            <h3>No posts found...</h3>
+        {% endfor %}
+
+    </div>
+
             <p align="center">
                 <a href="{% url 'posts' %}">View More</a>
             </p>

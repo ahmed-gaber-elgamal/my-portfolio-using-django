@@ -1,17 +1,24 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Post
 
 
 def home(request):
-    return render(request, 'base/index.html')
+    posts = Post.objects.filter(active=True, featured=True)[0:3]
+    context = {'posts':posts}
+    return render(request, 'base/index.html', context)
 
 
 def posts(request):
-    return render(request, 'base/posts.html')
+    posts = Post.objects.filter(active=True)
+    context = {'posts':posts}
+    return render(request, 'base/posts.html', context)
 
 
-def post(request):
-    return render(request, 'base/post.html')
+def post(request, pk):
+    post = Post.objects.get(id=pk)
+    context = {'post': post}
+    return render(request, 'base/post.html', context)
 
 
 def profile(request):

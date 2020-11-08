@@ -324,6 +324,15 @@ ul{
     background-color: var(--buttonColor);
     border: none;
 }
+.tag{
+    display:inline-block;
+    color:#fff;
+    background-color:#888;
+    border-radius:5px;
+    margin:2px;
+    padding:2px 5px;
+    font-size:12px;
+}
 @media screen and (max-width: 1200px){
     .main-container{
         width: 95%;
