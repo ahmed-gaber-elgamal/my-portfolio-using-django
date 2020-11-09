@@ -1,8 +1,23 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
+<style type="text/css">
+    #id_tags{
+        max-height:100px;
+        ooverflow-y:scroll;
+        border:1px solid #888;
+        padding:5px;
+        border-radius:5px;
+    }
+</style>
+
 <div class="main-container">
     <h1>Posts</h1>
+    <form method="GET">
+        {{ myFilter.form|crispy }}
+        <input class="btn btn-primary" type="submit" value="Search ..">
+    </form>
     <div class="post-wrapper">
         {% for post in posts %}
             <div class="post">

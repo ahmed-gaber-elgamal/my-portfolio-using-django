@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Post
 from .forms import PostForm
-
+from .filters import PostFilter
 
 
 def home(request):
@@ -14,7 +14,9 @@ def home(request):
 
 def posts(request):
     posts = Post.objects.filter(active=True)
-    context = {'posts':posts}
+    myFilter = PostFilter(request.GET, queryset=posts)
+    posts = myFilter.qs
+    context = {'posts': posts, 'myFilter': myFilter}
     return render(request, 'base/posts.html', context)
 
 
@@ -62,3 +64,4 @@ def deletePost(request, pk):
         return redirect('posts')
     context = {'item': post}
     return render(request, 'base/delete_post.html', context)
+
