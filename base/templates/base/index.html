@@ -93,7 +93,7 @@
             <div class="post-wrapper">
         {% for post in posts %}
             <div class="post">
-                <img class="thumbnail" src="{% static 'images/ahmed-gaber.jpg' %}" alt="">
+                <img class="thumbnail" src="{{ post.thumbnail.url }}" alt="">
                 <div class="post-preview">
                     <h6 class="post-title">{{post.headline}}</h6>
                     <p class="post-intro">
