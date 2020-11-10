@@ -99,7 +99,7 @@
                     <p class="post-intro">
                         {{ post.sub_headline }}
                     </p>
-                    <a href="{% url 'post' post.id %}">Read More</a>
+                    <a href="{% url 'post' post.slug %}">Read More</a>
                     <hr>
                     {% for tag in post.tags.all %}
                         <span class="tag">{{ tag }}</span>
